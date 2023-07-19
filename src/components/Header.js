@@ -8,7 +8,8 @@ import { useStateValue } from '@/Store/Store';
 
 import Link from 'next/link';
 
-import { auth,signOut } from '@/firebase';
+import { auth } from '@/firebase';
+import { signOut } from 'firebase/auth';
 
 
 function Header() {
@@ -55,9 +56,8 @@ router.push('/')
 
   
   const handleAuthenticaton = () => {
-    if (!user) {
-      auth.signOut();
-    }
+    if (user)
+  auth.signOut()
   }
 
 
@@ -88,9 +88,9 @@ router.push('/')
            
            <BiSearch  className='bg-waite w-200 h-7  hidden sm:flex  bg-orange-500 font-extrabold'/>
           <div className=' flex  mr-2 m-2 py-2 text-white'>
-          <Link href={!user ? "/":"/login"} >
+          <Link href={!user ?"/login" :'/login'}>
           <div  className='m-1 'onClick={handleAuthenticaton}>
-            <button  className='d flex m-2'> {!user ? "Sign Out" : "Sign In"}</button>
+            <button  className='d flex m-2'> {user ? "Sign Out" : "Sign In"}</button>
             <button className='flex 1-2' > Hello {user?.email}</button>
 
           </div>

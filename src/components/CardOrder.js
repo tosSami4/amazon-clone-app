@@ -8,7 +8,7 @@ import { useStateValue } from '@/Store/Store';
 import { serverTimestamp } from 'firebase/firestore/lite';
 function CardOrder ({image,name, rating, createdAt,price,id}) {
   const [{ basket,user },dispatch] = useStateValue();
-  const date = new Date(createdAt?.seconds * 1000).toDateString();
+  
 
     
   
@@ -34,7 +34,10 @@ function CardOrder ({image,name, rating, createdAt,price,id}) {
    dispatch({type:'REMOVE_FROM_BASKET'})
   }
 
-   /// const date = new Date(order?.data()?.createdAt?.seconds * 1000).toDateString();
+  const date = new Date(createdAt?.createdAt?.seconds * 1000)?.toLocaleTimeString();
+   
+
+
   return (
     
     
@@ -47,7 +50,7 @@ function CardOrder ({image,name, rating, createdAt,price,id}) {
     <dvi className=' bg     col-span-1 '>
      <img src={image} height={200 } width={200} objectFit='' className=' f'/>
       <span className='uppercase m-2 text-white'>{name}</span>
-     <small className='t text-white'>₹{price}</small>
+     <small className='t text-white'>₹ {price}</small>
      <div className='' >
      
       </div>

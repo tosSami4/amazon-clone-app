@@ -14,6 +14,7 @@ import axios from "axios";
 
 
 import {getFirestore, collection,addDoc,serverTimestamp, doc ,setDoc} from "firebase/firestore/lite";
+import { useRouter } from "next/router";
 
 
 
@@ -25,7 +26,12 @@ const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
    const ref =collection( db,"posts");
   const [{ address, basket, user }, dispatch] = useStateValue();
   const [first, setfirst] = useState([])
+const router =useRouter()
 
+
+const d =()=>{
+  router.push('/login')
+}
 
   const addToCart = async () => {
     if (user) {
@@ -163,7 +169,7 @@ const stripePromise = loadStripe(`${process.env.STRIPE_PUBLIC_KEY}`);
                 className="bg bg-orange-500 uppercase border-spacing-0 font-bold hover:bg-slate-50 bottom-3">
 
                  <span hidden  className="bg bg-orange-600 W-90" >Processing</span>
-    
+                             <p   className="bg bg-orange-600 W-90" onClick={d}>Sign here</p>
                 </button>
                 <button hidden onClick={()=> {alert("Plaese Login!")}} 
                   className=" bg-orange-500 uppercase border-spacing-0 font-bold hover:bg-slate-50 bottom-3"></button>

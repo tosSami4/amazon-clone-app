@@ -63,7 +63,7 @@ console.log(order1);
       <div className="">
       {order1?.map(cart =>{
         return(
-          <CardOrder image={cart.image} name={cart.name}  price={cart.price} cart={cart.createdAt}/>
+          <CardOrder image={cart.image} name={cart.name}  price={cart.price} date={cart.createdAt}/>
         )
      
       }
